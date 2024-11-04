@@ -33,7 +33,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnObstacle()
     {
-        if(playerControllerScript.gameOver == false)
+        if(playerControllerScript.gameOver == false)//If game status not gameover, keep spawning obstacles. Increases score by 5
         {
             Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
             UpdateScore(5);
@@ -42,24 +42,24 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    public void UpdateScore(int scoreToAdd)
+    public void UpdateScore(int scoreToAdd)//Updates score text and score
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
     }
 
-    public void GameOver()
+    public void GameOver()//Set gameover text and shows the restart button
     {
         gameOverText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
     }
 
-    public void RestartGame()
+    public void RestartGame()//Simply restarts the scene as it was when started.
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void StartGame()
+    public void StartGame()//Sets all variables to default and starts the game.
     {
         InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
         score = 0;

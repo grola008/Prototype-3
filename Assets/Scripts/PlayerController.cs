@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && isOnGround == true && !gameOver)
+        if(Input.GetKeyDown(KeyCode.Space) && isOnGround == true && !gameOver)//Jumping, changes animation and plays sound
         {
             playerRb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
             isOnGround = false;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)//If player collides with obstacle, sets gameover to true and ends the game.
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
