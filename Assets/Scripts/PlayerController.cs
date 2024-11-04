@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float JumpForce;
     public float gravityModifier;
     public bool isOnGround = true;
-    public bool gameOver = false;
+    public bool gameOver = true;
     private Animator playerAnim;
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;

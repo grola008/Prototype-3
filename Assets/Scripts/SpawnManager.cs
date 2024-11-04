@@ -16,10 +16,11 @@ public class SpawnManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
+    public GameObject titleScreen;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
+        
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         
     }
@@ -56,5 +57,15 @@ public class SpawnManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartGame()
+    {
+        InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
+        score = 0;
+        UpdateScore(0);
+        playerControllerScript.gameOver = false;
+        titleScreen.SetActive(false);
+        scoreText.gameObject.SetActive(true);
     }
 }
