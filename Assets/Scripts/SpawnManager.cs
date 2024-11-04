@@ -67,5 +67,6 @@ public class SpawnManager : MonoBehaviour
         playerControllerScript.gameOver = false;
         titleScreen.SetActive(false);
         scoreText.gameObject.SetActive(true);
+        playerControllerScript.playerAnim.SetFloat("Speed_f", 1);
     }
 }
