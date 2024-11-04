@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip crashSound;
     private AudioSource playerAudio;
+    private SpawnManager spawnManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
         Physics.gravity *= gravityModifier;
         playerAnim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -49,10 +51,11 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             Debug.Log("Game Over");
             playerAnim.SetBool("Death_b", true);
-            playerAnim.SetInteger("Deathtype_int", 1);
+            //playerAnim.SetInteger("Deathtype_int", 0);
             explosionParticle.Play();
             dirtParticle.Stop();
             playerAudio.PlayOneShot(crashSound, 1.0f);
+            spawnManager.GameOver();
         }
         
     }
